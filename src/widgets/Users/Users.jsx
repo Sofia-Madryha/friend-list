@@ -16,10 +16,10 @@ const Users = ({ users }) => {
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
   return (
-    <div>
-      <ul>
+    <div className="users__section">
+      <ul className="users__list">
         {currentFriends.map((item) => (
-          <li key={item.id}>
+          <li className="users__item" key={item.id}>
             <UserInfo userInfo={item} />
 
             {isFavorite(item.id) ? (

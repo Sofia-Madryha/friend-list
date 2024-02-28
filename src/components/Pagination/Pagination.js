@@ -7,9 +7,9 @@ const Pagination = ({ friendsPerPage, totalFriends, paginate }) => {
 
   return (
     <nav>
-      <ul>
+      <ul className="pagination">
         {pageNumbers.map((number) => (
-          <li key={number}>
+          <li className="pagination__item" key={number}>
             <a onClick={() => paginate(number)} href='#'>
               {number}
             </a>

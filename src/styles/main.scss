@@ -1,0 +1,52 @@
+@import "../widgets/Header/Header.module.scss";
+@import "../widgets/Users/Users.module.scss";
+@import "../components/Pagination/Pagination.module.scss";
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap");
+
+
+body {
+    background-color: var(--background-color);
+    color: var(--color);
+  
+    margin: 0;
+    font-family: "Cinzel", serif;
+    font-weight: 500;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+      monospace;
+  }
+  
+  img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  li {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+  }
+
+
+  .container{
+    padding: 0 40px 0 40px;
+    margin: 0 auto;
+  }
