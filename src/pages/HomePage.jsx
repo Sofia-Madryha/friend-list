@@ -4,21 +4,32 @@ import { Users } from "../widgets";
 
 const HomePage = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  useEffect(() => {
-    async function getUsers() {
+  const getUsers = async () => {
+    try {
+      setLoading(true);
       const usersData = await fetchUsers();
       const users = usersData.data;
 
       setUsers([...users]);
+    } catch (e) {
+      setError(true);
+    } finally {
+      setLoading(false);
     }
+  };
 
+  useEffect(() => {
     getUsers();
   }, []);
 
   return (
     <div>
-      <Users users={users} />
+      {users.length > 0 && <Users users={users} />}
+      {error && <p>Something went wrong! Try later!</p>}
+      {loading && <p>Loading...</p>}
     </div>
   );
 };
