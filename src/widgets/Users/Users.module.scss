@@ -23,3 +23,19 @@
     }
   }
 }
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  .pagination__item {
+    border: 1px solid rgb(32, 155, 208);
+    width: 20px;
+    text-align: center;
+  }
+  .pagination__item-active {
+    background-color: rgb(32, 155, 208);
+    border-radius: 5px;
+  }
+}

@@ -1,24 +1,32 @@
+import ReactPaginate from "react-paginate";
 import { UserInfo } from "../../components";
-import Pagination from "../../components/Pagination/Pagination";
 import { FavouriteContext } from "../../context/FavoritesContext";
 import { useContext, useState } from "react";
 
 const Users = ({ users }) => {
   const { addToFavorites, isFavorite } = useContext(FavouriteContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [friendsPerPage] = useState(4);
+  const [usersPerPage] = useState(4);
 
-  const indexOfLastFriend = currentPage * friendsPerPage;
-  const indexOfFirstFriend = indexOfLastFriend - friendsPerPage;
-  const currentFriends = users.slice(indexOfFirstFriend, indexOfLastFriend)
+  const indexOfLastUser = currentPage + usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
+  const pageCount = Math.ceil(users.length / usersPerPage);
 
-    // Change page
-    const paginate = pageNumber => setCurrentPage(pageNumber);
+  // Change page
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * usersPerPage) % users.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setCurrentPage(newOffset);
+  };
 
   return (
     <div className="users__section">
       <ul className="users__list">
-        {currentFriends.map((item) => (
+        {currentUsers.map((item) => (
           <li className="users__item" key={item.id}>
             <UserInfo userInfo={item} />
 
@@ -32,10 +40,18 @@ const Users = ({ users }) => {
           </li>
         ))}
       </ul>
-      <Pagination
-        friendsPerPage={friendsPerPage}
-        totalFriends={users.length}
-        paginate={paginate}
+
+      <ReactPaginate
+        className="pagination"
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={usersPerPage}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        pageClassName="pagination__item"
+        activeClassName="pagination__item-active"
       />
     </div>
   );
