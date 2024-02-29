@@ -1,4 +1,10 @@
-.header__container{
-    padding: 10px 30px;
-    background-color: #61b6c7;
+.header__container {
+  padding: 10px 30px;
+  background-color: #61b6c7;
+
+  .header__list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 }

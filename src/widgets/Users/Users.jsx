@@ -24,10 +24,10 @@ const Users = ({ users }) => {
   };
 
   return (
-    <div className="users__section">
-      <ul className="users__list">
+    <div className="users__section section">
+      <ul className="users__list list">
         {currentUsers.map((item) => (
-          <li className="users__item" key={item.id}>
+          <li className="users__item item" key={item.id}>
             <UserInfo userInfo={item} />
 
             {isFavorite(item.id) ? (

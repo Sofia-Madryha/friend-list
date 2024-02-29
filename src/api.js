@@ -9,3 +9,10 @@ export const fetchUsers = async () => {
 
     return response;
   };
+
+  export const fetchPosts = async(currentPage, postsPerPage)=>{
+    const response = await axios.get(
+      `/posts?_page=${currentPage}&_per_page=${postsPerPage}&_limit=${postsPerPage}`
+    )
+    return response;
+  }

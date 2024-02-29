@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchUsers } from "../api";
+import { fetchUsers} from "../api";
 import { Users } from "../widgets";
 
-const HomePage = () => {
+const FriendsPage = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
- 
 
   const getUsers = async () => {
     try {
@@ -26,14 +25,14 @@ const HomePage = () => {
     getUsers();
   }, []);
 
-
   return (
     <div>
       {users.length > 0 && <Users users={users} />}
+
       {error && <p>Something went wrong! Try later!</p>}
       {loading && <p>Loading...</p>}
     </div>
   );
 };
 
-export default HomePage;
+export default FriendsPage;
